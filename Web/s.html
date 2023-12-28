@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Hesaplama Araçları</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e6e6e6; /* Arka plan rengi */
+            margin: 0;
+            padding: 0;
+            color: #333; /* Metin rengi */
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(241, 241, 241, 0); /* Başlık rengi */
+            color: #050000;
+            margin-bottom: 20px;
+        }
+
+        .calculator-section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .calculator-item {
+            margin-bottom: 20px;
+        }
+
+        .calculator-item label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .calculator-item input,
+        .calculator-item select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .calculator-item button {
+            background-color: #000102;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Goril GYM Farkıyla Kalori İhtiyacı Hesaplama</h1>
+
+    <div class="calculator-section">
+        <div class="calculator-item">
+            <label for="weight">Ağırlık (kg):</label>
+            <input type="text" id="weight" placeholder="Ağırlığınızı girin">
+        </div>
+
+        <div class="calculator-item">
+            <label for="height">Boy (cm):</label>
+            <input type="text" id="height" placeholder="Boyunuzu girin">
+        </div>
+
+        <div class="calculator-item">
+            <label for="age">Yaş:</label>
+            <input type="text" id="age" placeholder="Yaşınızı girin">
+        </div>
+
+        <div class="calculator-item">
+            <label for="gender">Cinsiyet:</label>
+            <select id="gender">
+                <option value="male">Erkek</option>
+                <option value="female">Kadın</option>
+            </select>
+        </div>
+
+        <div class="calculator-item">
+            <label for="activityLevel">Aktivite Seviyeniz:</label>
+            <select id="activityLevel">
+                <option value="sedentary">Az Aktif (Ofis İşleri)</option>
+                <option value="lightlyActive">Hafif Aktif (Hafif Egzersiz)</option>
+                <option value="moderatelyActive">Orta Düzeyde Aktif (Orta Egzersiz)</option>
+                <option value="veryActive">Çok Aktif (Yoğun Egzersiz)</option>
+            </select>
+        </div>
+
+        <div class="calculator-item">
+            <button onclick="calculateDailyCalories()">Günlük Kalori İhtiyacı Hesapla</button>
+        </div>
+    </div>
+
+    <script>
+        function calculateDailyCalories() {
+            var weight = parseFloat(document.getElementById('weight').value);
+            var height = parseFloat(document.getElementById('height').value);
+            var age = parseFloat(document.getElementById('age').value);
+            var gender = document.getElementById('gender').value;
+            var activityLevel = document.getElementById('activityLevel').value;
+
+            if (isNaN(weight) || isNaN(height) || isNaN(age) || weight <= 0 || height <= 0 || age <= 0) {
+                alert("Lütfen geçerli ağırlık, boy ve yaş değerleri girin.");
+                return;
+            }
+
+            var bmr;
+
+            if (gender === 'male') {
+                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            } else if (gender === 'female') {
+                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+            } else {
+                alert("Lütfen cinsiyet seçin.");
+                return;
+            }
+
+            var activityMultiplier;
+
+            switch (activityLevel) {
+                case 'sedentary':
+                    activityMultiplier = 1.2;
+                    break;
+                case 'lightlyActive':
+                    activityMultiplier = 1.375;
+                    break;
+                case 'moderatelyActive':
+                    activityMultiplier = 1.55;
+                    break;
+                case 'veryActive':
+                    activityMultiplier = 1.725;
+                    break;
+                default:
+                    alert("Lütfen aktivite seviyenizi seçin.");
+                    return;
+            }
+
+            var dailyCalories = bmr * activityMultiplier;
+
+            alert("Günlük Kalori İhtiyacınız: " + dailyCalories.toFixed(2) + " kcal");
+        }
+    </script>
+
+</body>
+
+</html>

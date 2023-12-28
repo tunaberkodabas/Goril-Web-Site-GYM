@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sıkça Sorulan Sorular</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0e015a; /* Arka plan rengi */
+            margin: 0;
+            padding: 0;
+            color: #333; /* Metin rengi */
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .faq-section {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .faq-question {
+            cursor: pointer;
+            padding: 10px;
+            margin: 5px;
+            background-color: #4285f4; /* Soru kutucuğu rengi */
+            border: none;
+            color: #fff;
+            width: 100%;
+            text-align: left;
+            border-radius: 4px;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px;
+            background-color: #4caf50; /* Cevap kutucuğu rengi */
+            margin: 5px;
+            color: #fff;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="faq-section">
+        <h1>Goril GYM S.S.S</h1>
+
+        <button class="faq-question" onclick="toggleAnswer('faq1')">Soru 1: Spor salonuna nasıl üye olabilirim?</button>
+        <div class="faq-answer" id="faq1">Cevap 1: Spor salonuna üye olmak için web sitemizden veya salonumuza gelerek başvuru formunu doldurabilirsiniz.</div>
+
+        <button class="faq-question" onclick="toggleAnswer('faq2')">Soru 2: Üyelik ücretleri nelerdir?</button>
+        <div class="faq-answer" id="faq2">Cevap 2: Üyelik ücretleri hakkında detaylı bilgi almak için fiyatlar sayfamızı ziyaret edebilirsiniz.</div>
+
+        <button class="faq-question" onclick="toggleAnswer('faq3')">Soru 3: Antrenman programları nasıl oluşturulur?</button>
+        <div class="faq-answer" id="faq3">Cevap 3: Antrenman programları için uzman antrenörlerimizle iletişime geçebilir veya online platformlarımızı kullanabilirsiniz.</div>
+
+        <button class="faq-question" onclick="toggleAnswer('faq4')">Soru 4: Saat kaçta açılıp kapanıyorsunuz?</button>
+        <div class="faq-answer" id="faq4">Cevap 4: Spor salonumuz haftanın her günü sabah 07:00'de açılır ve akşam 22:00'ye kadar hizmet verir.</div>
+
+        <button class="faq-question" onclick="toggleAnswer('faq5')">Soru 5: Grup derslerine nasıl katılabilirim?</button>
+        <div class="faq-answer" id="faq5">Cevap 5: Grup derslerimize katılmak için önceden rezervasyon yapabilir veya ders saatinden önce doğrudan katılabilirsiniz.</div>
+
+        <button class="faq-question" onclick="toggleAnswer('faq6')">Soru 6: Sauna ve spa hizmetleri ücrete dahil mi?</button>
+        <div class="faq-answer" id="faq6">Cevap 6: Evet, sauna ve spa hizmetleri Premium Üyelik paketimize dahildir.</div>
+
+        <button class="faq-question" onclick="toggleAnswer('faq7')">Soru 7: Üyelik iptali nasıl yapılır?</button>
+        <div class="faq-answer" id="faq7">Cevap 7: Üyelik iptali için müşteri hizmetlerimizle iletişime geçebilir veya online hesabınız üzerinden iptal talebinde bulunabilirsiniz.</div>
+
+        <button class="faq-question" onclick="toggleAnswer('faq8')">Soru 8: Spor ekipmanlarını nasıl kullanabilirim?</button>
+        <div class="faq-answer" id="faq8">Cevap 8: Spor ekipmanlarını kullanımı hakkında bilgi almak için antrenörlerimizden yardım isteyebilir veya online videolarımızı izleyebilirsiniz.</div>
+
+        <button class="faq-question" onclick="toggleAnswer('faq9')">Soru 9: İki aylık üyelik paketi ne kadar?</button>
+        <div class="faq-answer" id="faq9">Cevap 9: İki aylık üyelik paketleri fiyatları için fiyat listemizi ziyaret edebilir veya müşteri hizmetlerimizle iletişime geçebilirsiniz.</div>
+
+        <button class="faq-question" onclick="toggleAnswer('faq10')">Soru 10: Yüzme havuzunuz var mı?</button>
+        <div class="faq-answer" id="faq10">Cevap 10: Maalesef, şu anda spor salonumuzda bir yüzme havuzu bulunmamaktadır.</div>
+
+        <!-- Diğer soru ve cevaplar buraya eklenir -->
+
+    </div>
+
+    <script>
+        function toggleAnswer(faqId) {
+            var answer = document.getElementById(faqId);
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+            } else {
+                answer.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
